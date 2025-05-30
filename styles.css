@@ -12,7 +12,11 @@ h1 {
 }
 
 .rectangle {
+    position: absolute;
+    top: 15px;
+    left: 15px;
     height: 100px;
-    width: 200px;
-    background-color: white;
+    width: 300px;
+    background-color: darkgray;
+    z-index: -1;
 }
