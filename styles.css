@@ -1,0 +1,18 @@
+
+
+body {
+    background-color: black;
+}
+
+h1 {
+    font-family: "Anonymous Pro", monospace;
+    font-weight: 200;
+    margin-left: 50px;
+    color: white;
+}
+
+.rectangle {
+    height: 100px;
+    width: 200px;
+    background-color: white;
+}
