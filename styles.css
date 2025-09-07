@@ -36,7 +36,7 @@ html[data-theme="dark"] {
 html {
   scroll-behavior: smooth;
   /* this will be set dynamically to your header’s real height */
-  scroll-padding-top: var(--header-h, 50px);
+  scroll-padding-top: var(--header-h, 80px);
 }
 
 
@@ -97,6 +97,7 @@ a:focus-visible {
    =========================== */
 header {
   position: fixed;
+  width: 100%;
   top: 0;
   z-index: 50;
   background: color-mix(in oklab, var(--bg) 70%, transparent);
