@@ -41,4 +41,52 @@ if (document.fonts && document.fonts.ready) {
 }
 window.addEventListener('resize', setScrollPaddingTop);
 
+// --- Highlight active nav link based on scroll ---
+const sections = document.querySelectorAll("main section[id]");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+// Map href="#id" → link
+const linkMap = {};
+navLinks.forEach(link => {
+  const id = link.getAttribute("href").replace("#", "");
+  linkMap[id] = link;
+});
+
+// Clear all active classes
+function clearActive() {
+  navLinks.forEach(link => link.classList.remove("active"));
+}
+
+const observer = new IntersectionObserver(
+  entries => {
+    let mostVisible = null;
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!mostVisible || entry.intersectionRatio > mostVisible.intersectionRatio) {
+          mostVisible = entry;
+        }
+      }
+    });
+    if (mostVisible) {
+      clearActive();
+      const id = mostVisible.target.id;
+      if (linkMap[id]) linkMap[id].classList.add("active");
+    }
+  },
+  {
+    threshold: [0.25, 0.5, 0.75],
+    rootMargin: "-40% 0px -40% 0px" // “middle band” of the screen
+  }
+);
+
+// Start observing each section
+sections.forEach(section => observer.observe(section));
+
+// Remove focus outline sticking after tapping a nav link
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    setTimeout(() => link.blur(), 200);
+  });
+});
+
 

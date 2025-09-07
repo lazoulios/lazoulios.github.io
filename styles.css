@@ -136,6 +136,15 @@ header .brand {
   opacity: 1;
 }
 
+/* Active nav link (section currently in view) */
+.nav-links a.active {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  opacity: 1;              /* fully visible */
+  color: var(--text);
+}
+
+
 /* ===========================
    About
    =========================== */
