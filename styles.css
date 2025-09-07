@@ -1,35 +1,311 @@
-body {
-    background-color: #2d2d2d;
+/* ===========================
+   Theme Variables
+   =========================== */
+:root {
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
+
+/* Light theme */
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --panel: #f7f8fa;
+  --text: #1b1e24;
+  --muted: #5b6370;
+  --accent: #4460ff;
+  --border: #e6e9ee;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark theme */
+html[data-theme="dark"] {
+  --bg: #0b0c0f;
+  --panel: #121419;
+  --text: #e7e9ee;
+  --muted: #a2a8b3;
+  --accent: #7c9cf5;
+  --border: #1b1e25;
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Anonymous Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ===========================
+   Layout
+   =========================== */
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 64px;
+}
+
+section {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border);
+}
+section:last-of-type { border-bottom: 0; }
+
+h1, h2, h3 { margin: 0 0 12px; line-height: 1.2; }
 
 h1 {
-    font-family: "Anonymous Pro", monospace;
-    font-weight: 200;
-    margin-left: 50px;
-    color: white;
+  font-family: "Workbench", system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  font-size: clamp(28px, 4.6vw, 44px);
+  letter-spacing: 0.3px;
+}
+h2 { font-size: clamp(20px, 3.2vw, 28px); color: var(--text); }
+h3 { font-size: 18px; }
+
+p { margin: 0 0 12px; color: var(--text); }
+ul { margin: 8px 0 0; padding-left: 18px; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity .2s ease, color .2s ease, background .2s ease;
+}
+a:hover { opacity: 0.9; }
+a:focus-visible {
+  outline: 2px dashed var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-.rectangle {
-    border-radius: 30px;
-    position: absolute;
-    top: 15px;
-    height: 100px;
-    width: 400px;
-    z-index: -1;
-    background: #00000000;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
-    border-radius: 20px;
-    max-width: 600px;
-    font-size: 50px;
+/* ===========================
+   Header + Nav
+   =========================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in oklab, var(--bg) 70%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+header .nav {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .brand {
+  font-family: "Workbench", system-ui;
+  font-size: 20px;
+  letter-spacing: .3px;
+}
+.nav-links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  color: var(--text);
+  opacity: .9;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.nav-links a:hover {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  opacity: 1;
 }
 
+/* ===========================
+   About
+   =========================== */
+#about p {
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.resume-btn:hover {
+  background: #3652d9; /* darker blue */
+  transform: translateY(-2px);
+}
+
+
+/* ===========================
+   Projects
+   =========================== */
+.project-list {
+  display: grid;  /* stacked by default */
+  gap: 20px;
+}
+
+.project {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease;
+}
+.project:hover { transform: translateY(-2px); }
+.project h3 { margin-top: 0; }
+
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: opacity .2s;
+  
+}
+.github-btn:hover { opacity: .9; }
+.github-btn .icon { width: 18px; height: 18px; filter: invert(1); }
+
+/* ===========================
+   Contact
+   =========================== */
+.contact-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--accent);      /* solid blue background */
+  border: none;                   /* no border, looks like your GitHub button */
+  border-radius: 8px;
+  color: #fff;                    /* white text */
+  font-weight: 500;
+  text-decoration: none;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.contact-btn:hover {
+  background: #3652d9;            /* slightly darker blue on hover */
+  transform: translateY(-2px);
+}
+
+.contact-btn .icon {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);              /* makes icons white */
+}
+
+
+
+
+/* ===========================
+   Footer
+   =========================== */
 footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 5em;
-    background-color: #1a1a1a;
-    color: white;
-    text-align: center;
-    line-height: 50px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ===========================
+   Theme Toggle
+   =========================== */
+#theme-toggle {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  transition: background 0.2s ease, color 0.2s ease, 
+              transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#theme-toggle:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Theme icon transitions */
+.theme-icon {
+  position: absolute;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+/* Place icons nicely inside the button */
+#theme-toggle {
+  position: relative;
+  width: 40px;              /* fixed size for nice layout */
+  height: 40px;
+  padding: 0;               /* we’ll center via flex */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Default (light): show sun, hide moon */
+html[data-theme="light"] .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+html[data-theme="light"] .icon-moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.8);
+}
+
+/* Dark: show moon, hide sun */
+html[data-theme="dark"] .icon-sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.8);
+}
+html[data-theme="dark"] .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
 }

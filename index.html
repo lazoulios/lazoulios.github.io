@@ -1,20 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Workbench&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Georgios Lazaridis – Portfolio</title>
+  <meta name="description" content="Portfolio of Georgios Lazaridis: projects, contact links, and info." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Workbench&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>o mitsos gamietai</h1>
+  <header>
+    <div class="nav">
+      <div class="brand">Georgios Lazaridis</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+  <!-- Sun -->
+  <svg class="theme-icon icon-sun" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="5" fill="currentColor"></circle>
+    <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round">
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </g>
+  </svg>
+
+  <!-- Moon -->
+  <svg class="theme-icon icon-moon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 
+             7 7 0 0 0 21 12.79z" fill="currentColor"></path>
+  </svg>
+</button>
+</div>
+  </header>
+
+  <main>
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        4th Year Student in Computer Science at Aristotle University of Thessaloniki. Interested in new working opportunities.
+        I am a dedicated and enthusiastic student with a passion for technology, problem-solving, and software development.
+        Eager to apply my knowledge in real-world scenarios, I am committed to expanding my skills and expertise. I’m a quick
+        learner, organized, detail-oriented, and hardworking. I look forward to gaining practical experience and contributing
+        to meaningful coding and problem-solving projects.
+      </p>
+        <a class="resume-btn" href="resume.pdf" target="_blank" rel="noopener noreferrer">
+            📄 View Resume
+        </a>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="project-list">
+        <!-- Linear Regression with Gradient Descent -->
+        <article class="project">
+          <h3>
+Linear Regression with Gradient Descent</h3>
+          <p>
+            Built a Linear Regression model with Gradient Descent from scratch in Python, designed to handle both single and multiple features. The project included implementing the cost function, gradient updates, and feature normalization without relying on machine learning libraries, and I tested it on custom datasets for predicting house prices based on square footage alone as well as square footage, number of bedrooms, and house age. Along the way I visualized the cost history to confirm convergence, which gave me a deeper understanding of how gradient descent works in practice.</p>
+          <a href="https://github.com/lazoulios/supervised-learning-algorithms"
+             target="_blank" rel="noopener noreferrer" class="github-btn">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" class="icon" />
+            View on GitHub
+          </a>
+        </article>
+
+        <!-- Car Management Android Application -->
+        <article class="project">
+          <h3>Car Management Android Application</h3>
+          <p>
+            Developed an Android application in Java using Android Studio. The app enables users to store and manage car information through an SQLite database, track trips, and compare fuel consumption with other cars of similar engine displacement. Designed interactive GUIs for data entry and visualization to enhance usability and data organization. Through this project, I strengthened my skills in Android development, SQL, and database integration, and gained practical experience in building user-focused applications from scratch. App was developed for a university project.
+          </p>
+          <a href="https://github.com/lazoulios/android-app-dev"
+             target="_blank" rel="noopener noreferrer" class="github-btn">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" class="icon" />
+            View on GitHub
+          </a>
+        </article>
+
+        <!-- Endless Runner Game -->
+        <article class="project">
+          <h3>Endless Runner Game</h3>
+          <p>
+            Developed an endless runner game in Unity inspired by titles like Subway Surfers, where the player continuously navigates obstacles while collecting coins. While the character and obstacle models were provided, I implemented all the game logic and mechanics in the engine, handling player movement, obstacle spawning, scoring, and progression. Beyond coding, I also worked on the presentation of the game by putting together a simple soundtrack in Audacity, designing a logo in Photoshop, and creating a coin asset in Blender. This project gave me hands-on experience with Unity’s workflow, scripting, and integrating different types of media into a functional game. This project was developed as part of a university assignment.</p>
+          <a href="https://github.com/lazoulios/unity-endless-runner"
+             target="_blank" rel="noopener noreferrer" class="github-btn">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" class="icon" />
+            View on GitHub
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>You can find me on:</p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/lazoulios/" target="_blank" class="contact-btn">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" 
+       alt="LinkedIn" class="icon">
+  LinkedIn
+</a>
+
+        <a href="https://github.com/lazoulios" target="_blank" rel="noopener noreferrer" class="contact-btn">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" class="icon">
+          GitHub
+        </a>
+        <a href="mailto:lazgiorgos01@gmail.com" class="contact-btn">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/minutemailer.svg" alt="" class="icon">
+          Email
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Georgios Lazaridis</p>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
 </body>
-<footer>
-    <p>under construction</p>
-</footer>
 </html>
