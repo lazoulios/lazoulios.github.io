@@ -370,37 +370,41 @@ img.icon,
   flex-shrink: 0;
 }
 
-/* Mobile header layout + sizing */
+/* Mobile header layout + compact toggle */
 @media (max-width: 640px) {
   header .nav {
     display: grid;
-    grid-template-columns: 1fr auto; /* brand | toggle */
+    grid-template-columns: auto 1fr auto; /* brand | links | toggle */
     align-items: center;
     gap: 8px;
     padding: 10px 14px;
   }
 
   header .brand {
-    font-size: 18px;    /* smaller so it doesn’t wrap */
+    font-size: 18px;
     line-height: 1.1;
   }
 
-  /* put the links on their own row, full width */
+  /* keep links centered in the middle column */
   .nav-links {
-    grid-column: 1 / -1;
-    width: 100%;
-    justify-content: space-between;
+    display: flex;
+    justify-content: center;
     gap: 12px;
-    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   .nav-links a {
-    padding: 6px 8px;
+    padding: 4px 6px;  /* smaller padding so they don’t wrap */
   }
 
-  /* keep the toggle on the top-right */
+  /* compact theme toggle */
   #theme-toggle {
-    justify-self: end;
+    padding: 4px 6px;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 6px;
   }
 }
 
