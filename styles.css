@@ -126,15 +126,19 @@ header .brand {
 }
 .nav-links a {
   color: var(--text);
-  opacity: .9;
   padding: 6px 10px;
   border-radius: 8px;
-}
-.nav-links a:hover {
-  background: var(--panel);
+  background: var(--panel);        /* always highlighted */
   border: 1px solid var(--border);
   opacity: 1;
+  transition: background 0.2s ease, color 0.2s ease;
 }
+
+.nav-links a:hover {
+  background: color-mix(in oklab, var(--panel) 80%, var(--accent) 20%);
+  color: var(--text);
+}
+
 
 /* ===========================
    About
@@ -417,12 +421,4 @@ img.icon,
     justify-content: center;
     padding: 12px 14px;
   }
-}
-
-/* Active link for section in view */
-.nav-links a.active {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  opacity: 1;
-  color: var(--text);
 }
