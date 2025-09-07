@@ -309,3 +309,76 @@ html[data-theme="dark"] .icon-moon {
   opacity: 1;
   transform: rotate(0deg) scale(1);
 }
+
+/* ===========================
+   Mobile polish
+   =========================== */
+@media (max-width: 640px) {
+  /* Make sections tighter on mobile */
+  section { padding: 32px 0; }
+
+  /* Sticky header: solid background on mobile to avoid translucency issues */
+  header {
+    background: var(--bg);
+    backdrop-filter: none;
+  }
+
+  /* Nav: allow wrapping and stack links under brand */
+  header .nav {
+    padding: 10px 14px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  header .brand {
+    font-size: 18px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;   /* spread items */
+    gap: 12px;
+  }
+  .nav-links a {
+    padding: 6px 8px;
+  }
+
+  /* Theme toggle: smaller + aligned right */
+  #theme-toggle {
+    padding: 6px 10px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  /* About text: improve readability */
+  #about p {
+    font-size: 15px;
+  }
+
+  /* Projects: compact cards on mobile */
+  .project {
+    padding: 16px;
+  }
+  .project p {
+    font-size: 15px;
+  }
+
+  /* Contact buttons: use grid so they wrap cleanly and fill width */
+  .contact-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* two columns on phones */
+    gap: 12px;
+  }
+  /* If you prefer one per row, uncomment:
+  .contact-links { grid-template-columns: 1fr; }
+  */
+
+  .contact-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 12px;
+  }
+
+  /* Better anchor scrolling on small screens (sticky header offset) */
+  :target { scroll-margin-top: 72px; }
+}
