@@ -33,8 +33,12 @@ html[data-theme="dark"] {
 *::after { box-sizing: border-box; }
 
 
+html {
+  scroll-behavior: smooth;
+  /* this will be set dynamically to your header’s real height */
+  scroll-padding-top: var(--header-h, 80px);
+}
 
-html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -241,13 +245,56 @@ header .brand {
 /* ===========================
    Footer
    =========================== */
+/* Full-width footer (edge to edge) */
 footer {
+  width: 100%;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+/* Constrained content inside footer */
+.footer-inner {
   max-width: 980px;
   margin: 0 auto;
-  padding: 24px 18px 40px;
-  color: var(--muted);
-  border-top: 1px solid var(--border);
+  padding: 0px 18px 0px;  /* <= adjust right padding if you want it closer to the edge */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;    /* anchor items to the bottom of the footer */
+  gap: 12px;
 }
+
+.footer-gif {
+  height: 100px;            /* tweak size */
+  width: auto;
+  object-fit: contain;
+  align-self: flex-end;     /* ensure it hugs the footer bottom */
+}
+
+/* Make sure the footer sits at the bottom of the page */
+html, body { height: 100%; }
+body {
+  display: flex;
+  flex-direction: column;
+}
+main { flex: 1; }
+
+/* Optional: on small screens, stack neatly */
+@media (max-width: 480px) {
+  .footer-inner {
+    flex-direction: row;     /* stay in a row */
+    padding-bottom: 0px;    /* a bit tighter on mobile */
+  }
+  .footer-gif { height: 72px; }
+}
+
+
+.footer-gif {
+  height: 100px;         
+  width: auto;          
+  object-fit: contain;  
+  align-self: flex-end; 
+}
+
 
 /* ===========================
    Theme Toggle
@@ -321,3 +368,53 @@ img.icon,
   vertical-align: middle;
   flex-shrink: 0;
 }
+
+/* Mobile header layout + sizing */
+@media (max-width: 640px) {
+  header .nav {
+    display: grid;
+    grid-template-columns: 1fr auto; /* brand | toggle */
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+  }
+
+  header .brand {
+    font-size: 18px;    /* smaller so it doesn’t wrap */
+    line-height: 1.1;
+  }
+
+  /* put the links on their own row, full width */
+  .nav-links {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  .nav-links a {
+    padding: 6px 8px;
+  }
+
+  /* keep the toggle on the top-right */
+  #theme-toggle {
+    justify-self: end;
+  }
+}
+
+
+/* Mobile contact buttons: single column, full width */
+@media (max-width: 640px) {
+  .contact-links {
+    display: grid;
+    grid-template-columns: 1fr; /* stack */
+    gap: 12px;
+  }
+  .contact-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 14px;
+  }
+}
+

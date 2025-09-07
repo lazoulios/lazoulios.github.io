@@ -26,5 +26,19 @@ if (themeToggle) {
   });
 }
 
+// --- Keep anchor jumps below the sticky header ---
+function setScrollPaddingTop() {
+  const header = document.querySelector('header');
+  if (!header) return;
+  const h = header.offsetHeight;
+  document.documentElement.style.setProperty('--header-h', `${h}px`);
+}
+
+// Run on load, after fonts, and on resize (header can wrap on mobile)
+window.addEventListener('load', setScrollPaddingTop);
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(setScrollPaddingTop);
+}
+window.addEventListener('resize', setScrollPaddingTop);
 
 
