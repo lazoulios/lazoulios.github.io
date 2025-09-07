@@ -267,6 +267,7 @@ footer {
   height: 100px;            /* tweak size */
   width: auto;
   object-fit: contain;
+  display: block;
   align-self: flex-end;     /* ensure it hugs the footer bottom */
 }
 
