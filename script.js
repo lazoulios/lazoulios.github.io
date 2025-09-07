@@ -26,67 +26,55 @@ if (themeToggle) {
   });
 }
 
-// --- Keep anchor jumps below the sticky header ---
-function setScrollPaddingTop() {
+// ---- Active nav link based on scroll (header-aware) ----
+const sections = Array.from(document.querySelectorAll('main section[id]'));
+const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+
+// Map id -> link
+const linkById = {};
+navLinks.forEach(a => {
+  const id = (a.getAttribute('href') || '').replace('#', '');
+  if (id) linkById[id] = a;
+});
+
+function setActive(id) {
+  navLinks.forEach(a => a.classList.toggle('active', a === linkById[id]));
+}
+
+function updateActiveByScroll() {
   const header = document.querySelector('header');
-  if (!header) return;
-  const h = header.offsetHeight;
-  document.documentElement.style.setProperty('--header-h', `${h}px`);
-}
+  const headerH = header ? header.offsetHeight : 0;
 
-// Run on load, after fonts, and on resize (header can wrap on mobile)
-window.addEventListener('load', setScrollPaddingTop);
-if (document.fonts && document.fonts.ready) {
-  document.fonts.ready.then(setScrollPaddingTop);
-}
-window.addEventListener('resize', setScrollPaddingTop);
+  // the line we care about is just below the sticky header
+  const lineY = window.scrollY + headerH + 1;
 
-// --- Highlight active nav link based on scroll ---
-const sections = document.querySelectorAll("main section[id]");
-const navLinks = document.querySelectorAll(".nav-links a");
-
-// Map href="#id" → link
-const linkMap = {};
-navLinks.forEach(link => {
-  const id = link.getAttribute("href").replace("#", "");
-  linkMap[id] = link;
-});
-
-// Clear all active classes
-function clearActive() {
-  navLinks.forEach(link => link.classList.remove("active"));
-}
-
-const observer = new IntersectionObserver(
-  entries => {
-    let mostVisible = null;
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        if (!mostVisible || entry.intersectionRatio > mostVisible.intersectionRatio) {
-          mostVisible = entry;
-        }
-      }
-    });
-    if (mostVisible) {
-      clearActive();
-      const id = mostVisible.target.id;
-      if (linkMap[id]) linkMap[id].classList.add("active");
+  // find the section whose vertical range contains lineY
+  let currentId = null;
+  for (const sec of sections) {
+    const top = sec.offsetTop;
+    const bottom = top + sec.offsetHeight;
+    if (lineY >= top && lineY < bottom) {
+      currentId = sec.id;
+      break;
     }
-  },
-  {
-    threshold: [0.25, 0.5, 0.75],
-    rootMargin: "-40% 0px -40% 0px" // “middle band” of the screen
   }
-);
 
-// Start observing each section
-sections.forEach(section => observer.observe(section));
+  // Clear highlight if above first section
+  if (!currentId && sections.length && lineY < sections[0].offsetTop) {
+    setActive(null);
+    return;
+  }
 
-// Remove focus outline sticking after tapping a nav link
-navLinks.forEach(link => {
-  link.addEventListener("click", () => {
-    setTimeout(() => link.blur(), 200);
-  });
+  if (currentId) setActive(currentId);
+}
+
+// Run on load, scroll, and resize (layout can change on mobile)
+window.addEventListener('load', updateActiveByScroll);
+window.addEventListener('scroll', updateActiveByScroll, { passive: true });
+window.addEventListener('resize', updateActiveByScroll);
+
+// Avoid “stuck focus” look after tapping a nav link on mobile
+navLinks.forEach(a => {
+  a.addEventListener('click', () => setTimeout(() => a.blur(), 150));
 });
-
 

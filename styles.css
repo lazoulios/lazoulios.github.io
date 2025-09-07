@@ -36,7 +36,7 @@ html[data-theme="dark"] {
 html {
   scroll-behavior: smooth;
   /* this will be set dynamically to your header’s real height */
-  scroll-padding-top: var(--header-h, 80px);
+  scroll-padding-top: var(--header-h, 60px);
 }
 
 
@@ -135,15 +135,6 @@ header .brand {
   border: 1px solid var(--border);
   opacity: 1;
 }
-
-/* Active nav link (section currently in view) */
-.nav-links a.active {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  opacity: 1;              /* fully visible */
-  color: var(--text);
-}
-
 
 /* ===========================
    About
@@ -379,41 +370,37 @@ img.icon,
   flex-shrink: 0;
 }
 
-/* Mobile header layout + compact toggle */
+/* Mobile header layout + sizing */
 @media (max-width: 640px) {
   header .nav {
     display: grid;
-    grid-template-columns: auto 1fr auto; /* brand | links | toggle */
+    grid-template-columns: 1fr auto; /* brand | toggle */
     align-items: center;
     gap: 8px;
     padding: 10px 14px;
   }
 
   header .brand {
-    font-size: 18px;
+    font-size: 18px;    /* smaller so it doesn’t wrap */
     line-height: 1.1;
   }
 
-  /* keep links centered in the middle column */
+  /* put the links on their own row, full width */
   .nav-links {
-    display: flex;
-    justify-content: center;
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: space-between;
     gap: 12px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    flex-wrap: nowrap;
   }
 
   .nav-links a {
-    padding: 4px 6px;  /* smaller padding so they don’t wrap */
+    padding: 6px 8px;
   }
 
-  /* compact theme toggle */
+  /* keep the toggle on the top-right */
   #theme-toggle {
-    padding: 4px 6px;
-    font-size: 14px;
-    line-height: 1;
-    border-radius: 6px;
+    justify-self: end;
   }
 }
 
@@ -432,3 +419,10 @@ img.icon,
   }
 }
 
+/* Active link for section in view */
+.nav-links a.active {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  opacity: 1;
+  color: var(--text);
+}
