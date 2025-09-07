@@ -36,7 +36,7 @@ html[data-theme="dark"] {
 html {
   scroll-behavior: smooth;
   /* this will be set dynamically to your header’s real height */
-  scroll-padding-top: var(--header-h, 60px);
+  scroll-padding-top: var(--header-h, 50px);
 }
 
 
@@ -96,7 +96,7 @@ a:focus-visible {
    Header + Nav
    =========================== */
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 50;
   background: color-mix(in oklab, var(--bg) 70%, transparent);
@@ -374,37 +374,50 @@ img.icon,
   flex-shrink: 0;
 }
 
-/* Mobile header layout + sizing */
+/* Mobile header: single row (brand | links | toggle) */
 @media (max-width: 640px) {
   header .nav {
     display: grid;
-    grid-template-columns: 1fr auto; /* brand | toggle */
+    grid-template-columns: auto 1fr auto; /* brand | links | toggle */
     align-items: center;
     gap: 8px;
-    padding: 10px 14px;
+    padding: 8px 12px;
   }
 
+  /* Keep your name on one line */
   header .brand {
-    font-size: 18px;    /* smaller so it doesn’t wrap */
-    line-height: 1.1;
+    font-size: 16px;
+    line-height: 1;
+    flex-direction: column; 
+    white-space: normal;  
+    letter-spacing: 0.2px;
   }
 
-  /* put the links on their own row, full width */
+  /* Links live in the middle column (no extra grid-column rule) */
   .nav-links {
-    grid-column: 1 / -1;
-    width: 100%;
+    display: flex;
     justify-content: space-between;
-    gap: 12px;
-    flex-wrap: nowrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
+  /* Make the pills a bit smaller on phones */
   .nav-links a {
-    padding: 6px 8px;
+    font-size: 15px;
+    padding: 4px 8px;
+    border-radius: 8px;
   }
 
-  /* keep the toggle on the top-right */
+  /* Compact theme toggle on the right */
   #theme-toggle {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 8px;
     justify-self: end;
+    box-shadow: none; /* reduce visual bulk */
   }
 }
 
