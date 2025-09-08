@@ -127,17 +127,20 @@ header .brand {
 }
 .nav-links a {
   color: var(--text);
-  padding: 6px 10px;
+  padding: 4px 12px;
   border-radius: 8px;
   background: var(--panel);        /* always highlighted */
   border: 1px solid var(--border);
   opacity: 1;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .nav-links a:hover {
-  background: color-mix(in oklab, var(--panel) 80%, var(--accent) 20%);
-  color: var(--text);
+  background: var(--accent);
+  color: #fff;
 }
 
 
@@ -168,6 +171,58 @@ header .brand {
 .resume-btn:hover {
   background: #3652d9; /* darker blue */
   transform: translateY(-2px);
+}
+
+.about-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 10px;
+}
+
+.about-row p {
+  margin: 0;
+  flex: 1 1 0%;
+}
+
+.about-gif {
+  width: 150px;
+  height: auto;
+  display: block;
+  transform: scaleX(-1);
+}
+
+.about-gif--desktop {
+  margin-left: 50px;
+  display: block;
+}
+
+.about-gif--mobile {
+  display: none;
+}
+
+.about-btn-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .about-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .about-gif--desktop {
+    display: none;
+  }
+  .about-gif--mobile {
+    display: block;
+    width: 60px;
+    height: auto;
+    transform: scaleX(-1);
+    margin-top:5px;
+  }
 }
 
 
@@ -204,7 +259,11 @@ header .brand {
   transition: opacity .2s;
   
 }
-.github-btn:hover { opacity: .9; }
+.github-btn:hover {
+  background: #3652d9;
+  opacity: .9;
+  transform: translateY(-2px);
+}
 .github-btn .icon { width: 18px; height: 18px; filter: invert(1); }
 
 /* ===========================
