@@ -1,4 +1,3 @@
-
 // Theme toggle
 const themeToggle = document.getElementById("theme-toggle");
 
@@ -25,3 +24,18 @@ if (themeToggle) {
     );
   });
 }
+
+// Fax button joke
+document.addEventListener("DOMContentLoaded", function () {
+  var faxBtn = document.getElementById("fax-btn");
+  var faxBubble = document.getElementById("fax-bubble");
+  if (faxBtn && faxBubble) {
+    faxBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      faxBubble.style.display = "block";
+      setTimeout(function () {
+        faxBubble.style.display = "none";
+      }, 1600);
+    });
+  }
+});

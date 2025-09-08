@@ -303,7 +303,9 @@ header .brand {
   filter: invert(1);              /* makes icons white */
 }
 
-
+.fax-icon-white {
+  filter: brightness(100) invert(1) grayscale(0) contrast(2.5);
+}
 
 
 /* ===========================
@@ -493,5 +495,48 @@ img.icon,
     width: 100%;
     justify-content: center;
     padding: 12px 14px;
+  }
+}
+
+/* ===========================
+   Speech Bubble
+   =========================== */
+.speech-bubble {
+  background: #eaeaea;
+  color: #222;
+  border-radius: 16px;
+  padding: 8px 16px;
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border: 2px solid #888;
+  position: absolute;
+  white-space: nowrap;
+  z-index: 2;
+}
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #eaeaea transparent transparent transparent;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.10));
+}
+
+@media (max-width: 640px) {
+  .speech-bubble {
+    top: 120%;
+    bottom: auto !important;
+  }
+  .speech-bubble::after {
+    top: auto;
+    bottom: 100%;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent #eaeaea transparent;
+    transform: translateX(-50%) rotate(180deg);
   }
 }
