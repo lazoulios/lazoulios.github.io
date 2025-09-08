@@ -29,13 +29,24 @@ if (themeToggle) {
 document.addEventListener("DOMContentLoaded", function () {
   var faxBtn = document.getElementById("fax-btn");
   var faxBubble = document.getElementById("fax-bubble");
+  var hideTimeout;
   if (faxBtn && faxBubble) {
     faxBtn.addEventListener("click", function (e) {
       e.preventDefault();
       faxBubble.style.display = "block";
-      setTimeout(function () {
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(function () {
         faxBubble.style.display = "none";
       }, 1600);
+    });
+    document.addEventListener("click", function (e) {
+      if (
+        faxBubble.style.display === "block" &&
+        !faxBtn.contains(e.target)
+      ) {
+        faxBubble.style.display = "none";
+        clearTimeout(hideTimeout);
+      }
     });
   }
 });

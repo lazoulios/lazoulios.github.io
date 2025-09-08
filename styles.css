@@ -290,6 +290,13 @@ header .brand {
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
   transition: background 0.2s ease, transform 0.2s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
 }
 
 .contact-btn:hover {
@@ -427,13 +434,12 @@ html[data-theme="dark"] .icon-moon {
 /* Guarantee small icons inside buttons/links */
 img.icon,
 .contact-btn img,
-.github-btn img {
-  width: 18px !important;
-  height: 18px !important;
-  max-width: none !important;   /* override global img { max-width:100% } */
-  display: inline-block !important;
-  vertical-align: middle;
-  flex-shrink: 0;
+.github-btn img,
+.footer-gif,
+.about-gif {
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 /* Mobile header: single row (brand | links | toggle) */
@@ -539,4 +545,29 @@ img.icon,
     border-color: transparent transparent #eaeaea transparent;
     transform: translateX(-50%) rotate(180deg);
   }
+}
+
+/* ===========================
+   User Select None
+   =========================== */
+.resume-btn,
+.github-btn,
+.contact-btn,
+#theme-toggle,
+.nav-links a {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+}
+
+.footer-gif,
+.about-gif {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
