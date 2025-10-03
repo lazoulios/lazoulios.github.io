@@ -50,3 +50,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// Project dropdown toggle
+function toggleProject(header) {
+  const content = header.nextElementSibling;
+  const isExpanded = header.classList.contains('expanded');
+  
+  if (isExpanded) {
+    header.classList.remove('expanded');
+    content.classList.remove('expanded');
+  } else {
+    header.classList.add('expanded');
+    content.classList.add('expanded');
+  }
+}

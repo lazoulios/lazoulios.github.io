@@ -655,3 +655,46 @@ img.icon,
     font-size: 13px;
   }
 }
+
+/* ===========================
+   Project Dropdown Styles
+   =========================== */
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 16px 0;
+  transition: all 0.15s ease;
+}
+
+.project-header:hover {
+  color: var(--accent);
+}
+
+.project-header h3 {
+  margin: 0;
+  flex: 1;
+}
+
+.dropdown-arrow {
+  font-size: 14px;
+  transition: transform 0.15s ease;
+  color: var(--muted);
+  margin-left: 12px;
+}
+
+.project-header.expanded .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.project-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.project-content.expanded {
+  max-height: 1000px;
+  padding-top: 16px;
+}
