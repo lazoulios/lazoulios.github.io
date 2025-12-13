@@ -722,6 +722,7 @@ img.icon,
   gap: 16px;
   padding: 24px 0;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .toggle-line::before,
