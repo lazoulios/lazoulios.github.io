@@ -256,6 +256,7 @@ header .brand {
   border-radius: 8px;
   font-size: 14px;
   text-decoration: none;
+  box-shadow: var(--shadow);
   transition: opacity .2s;
   
 }
@@ -288,7 +289,7 @@ header .brand {
   font-weight: 500;
   text-decoration: none;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  box-shadow: var(--shadow);
   transition: background 0.2s ease, transform 0.2s ease;
   user-select: none;
   -webkit-user-select: none;
@@ -697,4 +698,46 @@ img.icon,
 .project-content.expanded {
   max-height: 1000px;
   padding-top: 16px;
+}
+/* Project visibility toggle */
+.project-hidden {
+  display: none;
+}
+
+.project-hidden.visible {
+  display: block;
+}
+
+.toggle-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+  cursor: pointer;
+  position: relative;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  transition: color 0.2s ease;
+  gap: 16px;
+  padding: 24px 0;
+  user-select: none;
+}
+
+.toggle-line::before,
+.toggle-line::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--muted);
+  transition: background-color 0.2s ease;
+}
+
+.toggle-line:hover {
+  color: var(--accent);
+}
+
+.toggle-line:hover::before,
+.toggle-line:hover::after {
+  background-color: var(--accent);
 }

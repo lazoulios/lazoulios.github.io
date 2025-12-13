@@ -149,10 +149,44 @@
     <!-- Projects Section -->
     <section id="projects">
       <h2>Projects</h2>
+      
+      <div class="project-list" id="project-list">
+        <!-- Image Classification using Support Vector Machines -->
+        <article class="project project-visible">
+          <div class="project-header" onclick="toggleProject(this)">
+            <h3>Image Classification using Support Vector Machines</h3>
+            <span class="dropdown-arrow">▼</span>
+          </div>
+          <div class="project-content">
+            <p>
+              This project involved a comprehensive analysis comparing Support Vector Machine (SVM) kernels against a Feedforward Neural Network (MLP) baseline for multi-class image classification on the CIFAR-10 dataset. The implementation included two distinct SVM methods: a non-linear RBF Kernel requiring Principal Component Analysis (PCA) for dimensionality reduction (achieving 43.91% Test Accuracy), and a Linear Kernel baseline (achieving 35.48% Test Accuracy). All models were implemented using Scikit-Learn and TensorFlow for data handling. The extensive experimentation documented the significant performance gap between kernels, highlighting the inability of linear models to capture complex image features and the superiority of non-linear mapping for visual data.</p>
+            <a href="https://github.com/lazoulios/image-classification-svm-pca"
+               target="_blank" rel="noopener noreferrer" class="github-btn">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" class="icon" width="18" height="18" />
+              View on GitHub
+            </a>
+          </div>
+        </article>
 
-      <div class="project-list">
-        <!-- Regularized Neural Network -->
-        <article class="project">
+      <!-- Deep Learning Image Classification on CIFAR-10 -->
+        <article class="project project-visible">
+          <div class="project-header" onclick="toggleProject(this)">
+            <h3>Deep Learning Image Classification on CIFAR-10</h3>
+            <span class="dropdown-arrow">▼</span>
+          </div>
+          <div class="project-content">
+            <p>
+              This project involved a comprehensive analysis comparing different Feedforward Neural Network (FNN) architectures for multi-class image classification on the CIFAR-10 dataset. The implementation included two distinct methods: an MLP Baseline requiring Principal Component Analysis (PCA) for dimensionality reduction (achieving 52.88% Test Accuracy), and a Convolutional Neural Network (CNN) (achieving 70.00% Test Accuracy). All models were trained using the Back-propagation algorithm with the Adam optimizer. The extensive experimentation documented Overfitting in both architectures, highlighting the critical need for regularization and Early Stopping in production models</p>
+            <a href="https://github.com/lazoulios/neural-network-image-recognition"
+               target="_blank" rel="noopener noreferrer" class="github-btn">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" class="icon" width="18" height="18" />
+              View on GitHub
+            </a>
+          </div>
+        </article>
+
+      <!-- Regularized Neural Network -->
+        <article class="project project-visible">
           <div class="project-header" onclick="toggleProject(this)">
             <h3>Regularized Neural Network for Regional Air-Quality Forecasting</h3>
             <span class="dropdown-arrow">▼</span>
@@ -170,7 +204,7 @@
         </article>
 
         <!-- Linear Regression -->
-        <article class="project">
+        <article class="project project-hidden">
           <div class="project-header" onclick="toggleProject(this)">
             <h3>Linear Regression with Gradient Descent</h3>
             <span class="dropdown-arrow">▼</span>
@@ -188,7 +222,7 @@
         </article>
 
         <!-- Car Management Android Application -->
-        <article class="project">
+        <article class="project project-hidden">
           <div class="project-header" onclick="toggleProject(this)">
             <h3>Car Management Android Application</h3>
             <span class="dropdown-arrow">▼</span>
@@ -206,7 +240,7 @@
         </article>
 
         <!-- Endless Runner Game -->
-        <article class="project">
+        <article class="project project-hidden">
           <div class="project-header" onclick="toggleProject(this)">
             <h3>Endless Runner Game</h3>
             <span class="dropdown-arrow">▼</span>
@@ -223,6 +257,7 @@
           </div>
         </article>
       </div>
+      <div id="toggle-projects" class="toggle-line">Show More</div>
     </section>
 
     <!-- Contact Section -->

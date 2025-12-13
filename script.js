@@ -64,3 +64,26 @@ function toggleProject(header) {
     content.classList.add('expanded');
   }
 }
+
+// Show/Hide more projects
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleLine = document.getElementById("toggle-projects");
+  const hiddenProjects = document.querySelectorAll(".project-hidden");
+  let isExpanded = false;
+
+  if (toggleLine && hiddenProjects.length > 0) {
+    toggleLine.addEventListener("click", function () {
+      isExpanded = !isExpanded;
+
+      hiddenProjects.forEach(project => {
+        if (isExpanded) {
+          project.classList.add("visible");
+        } else {
+          project.classList.remove("visible");
+        }
+      });
+
+      toggleLine.textContent = isExpanded ? "Hide" : "Show More";
+    });
+  }
+});
