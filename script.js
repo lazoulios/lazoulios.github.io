@@ -128,3 +128,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const sel = document.querySelectorAll('a, button, img, svg');
+  sel.forEach(el => {
+    try { el.draggable = false; } catch (e) {}
+    el.addEventListener('dragstart', e => e.preventDefault());
+    el.addEventListener('selectstart', e => e.preventDefault());
+  });
+});

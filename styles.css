@@ -1,6 +1,3 @@
-/* ===========================
-   Theme Variables
-   =========================== */
 :root {
   --radius: 14px;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -8,7 +5,6 @@
   --card-shadow-hover: 0 18px 40px rgba(2,6,23,0.22);
 }
 
-/* Light theme */
 html[data-theme="light"] {
   --bg: #ffffff;
   --panel: #f7f8fa;
@@ -19,7 +15,6 @@ html[data-theme="light"] {
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* Dark theme */
 html[data-theme="dark"] {
   --bg: #0b0c0f;
   --panel: #121419;
@@ -38,7 +33,6 @@ html[data-theme="dark"] {
 
 html {
   scroll-behavior: smooth;
-  /* this will be set dynamically to your header’s real height */
   scroll-padding-top: var(--header-h, 80px);
 }
 
@@ -55,9 +49,6 @@ body {
 
 img { max-width: 100%; display: block; }
 
-/* ===========================
-   Layout
-   =========================== */
 main {
   max-width: 980px;
   margin: 0 auto;
@@ -95,9 +86,6 @@ a:focus-visible {
   border-radius: 6px;
 }
 
-/* ===========================
-   Header + Nav
-   =========================== */
 header {
   position: fixed;
   width: 100%;
@@ -132,7 +120,7 @@ header .brand {
   color: var(--text);
   padding: 4px 12px;
   border-radius: 8px;
-  background: var(--panel);        /* always highlighted */
+  background: var(--panel);        
   border: 1px solid var(--border);
   opacity: 1;
   line-height: 1.6;
@@ -147,9 +135,6 @@ header .brand {
 }
 
 
-/* ===========================
-   About
-   =========================== */
 #about p {
   color: var(--muted);
   max-width: 70ch;
@@ -172,7 +157,7 @@ header .brand {
 }
 
 .resume-btn:hover {
-  background: #3652d9; /* darker blue */
+  background: #3652d9;
   transform: translateY(-2px);
 }
 
@@ -228,12 +213,8 @@ header .brand {
   }
 }
 
-
-/* ===========================
-   Projects
-   =========================== */
 .project-list {
-  display: grid;  /* stacked by default */
+  display: grid; 
   gap: 20px;
 }
 
@@ -270,9 +251,6 @@ header .brand {
 }
 .github-btn .icon { width: 18px; height: 18px; filter: invert(1); }
 
-/* ===========================
-   Contact
-   =========================== */
 .contact-links {
   display: flex;
   gap: 16px;
@@ -285,10 +263,10 @@ header .brand {
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  background: var(--accent);      /* solid blue background */
-  border: none;                   /* no border, looks like your GitHub button */
+  background: var(--accent);      
+  border: none;                  
   border-radius: 8px;
-  color: #fff;                    /* white text */
+  color: #fff;                   
   font-weight: 500;
   text-decoration: none;
   justify-content: center;
@@ -304,7 +282,7 @@ header .brand {
 }
 
 .contact-btn:hover {
-  background: #3652d9;            /* slightly darker blue on hover */
+  background: #3652d9;        
   transform: translateY(-2px);
 }
 
@@ -435,7 +413,6 @@ html[data-theme="dark"] .icon-moon {
   transform: rotate(0deg) scale(1);
 }
 
-/* Guarantee small icons inside buttons/links */
 img.icon,
 .contact-btn img,
 .github-btn img,
@@ -563,10 +540,16 @@ img.icon,
   justify-content: center;
   align-items: center;
   padding: 18px 0 28px 0;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 .mobile-nav-gif img {
   width: 200px;
   height: auto;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 /* By default hide the mobile menu button; only show it on small screens */
@@ -672,15 +655,30 @@ img.icon,
   -ms-user-select: none;
 }
 
-/* ===========================
-   Technologies
-   =========================== */
+a,
+button,
+.resume-btn,
+.github-btn,
+.contact-btn,
+#theme-toggle,
+.nav-links a,
+.mobile-nav-links a {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+img,
+svg {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
 #technologies {
-  /* Uses the same section styling as your other sections */
 }
 
 #technologies h2 {
-  /* Uses your existing h2 styling */
   margin-bottom: 32px;
 }
 
