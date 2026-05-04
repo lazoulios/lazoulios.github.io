@@ -4,6 +4,8 @@
 :root {
   --radius: 14px;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 8px 28px rgba(2,6,23,0.12);
+  --card-shadow-hover: 0 18px 40px rgba(2,6,23,0.22);
 }
 
 /* Light theme */
@@ -26,6 +28,7 @@ html[data-theme="dark"] {
   --accent: #7c9cf5;
   --border: #1b1e25;
   --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  --card-shadow: 0 8px 28px rgba(2,6,23,0.45);
 }
 
 *,
@@ -239,10 +242,10 @@ header .brand {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--card-shadow);
   transition: transform .15s ease;
 }
-.project:hover { transform: translateY(-2px); }
+.project:hover { transform: translateY(-2px); box-shadow: var(--card-shadow-hover); }
 .project h3 { margin-top: 0; }
 
 .github-btn {
@@ -447,7 +450,7 @@ img.icon,
 @media (max-width: 640px) {
   header .nav {
     display: grid;
-    grid-template-columns: auto 1fr auto; /* brand | links | toggle */
+    grid-template-columns: auto 1fr auto auto; /* brand | links | theme-toggle | mobile-btn */
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
@@ -489,6 +492,102 @@ img.icon,
     box-shadow: none; /* reduce visual bulk */
   }
 }
+
+/* Mobile side menu styles */
+.mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.6);
+  z-index: 85;
+  opacity: 0;
+  backdrop-filter: blur(2px);
+  transition: opacity .18s ease;
+  display: none;
+}
+.mobile-backdrop.open { display:block; opacity:1; }
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 280px;
+  max-width: 90vw;
+  background: var(--panel);
+  box-shadow: -18px 0 40px rgba(2,6,23,0.45);
+  z-index: 90;
+  transform: translateX(110%);
+  transition: transform .28s cubic-bezier(.2,.9,.2,1);
+  display: flex;
+  align-items: flex-start;
+}
+.mobile-nav.open { transform: translateX(0%); }
+.mobile-nav-inner { width:100%; padding: 10px;  }
+  .mobile-nav-inner { width:100%; padding: 20px; position: relative; }
+  .mobile-nav-close {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    transition: background .18s ease, color .12s ease, transform .12s ease, box-shadow .12s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+.mobile-nav-links { list-style:none; padding: 40px 0 0 0; margin:0; display:flex; flex-direction:column; gap:12px; }
+.mobile-nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--panel), color-mix(in srgb, var(--panel) 96%, transparent));
+  border: 1px solid var(--border);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background .18s ease, transform .12s ease, color .12s ease;
+}
+
+/* mobile menu gif */
+.mobile-nav-gif {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 0 28px 0;
+}
+.mobile-nav-gif img {
+  width: 200px;
+  height: auto;
+}
+
+/* By default hide the mobile menu button; only show it on small screens */
+#mobile-menu-btn { display: none; }
+
+/* Show hamburger, hide header links on small screens */
+@media (max-width: 640px) {
+  #mobile-menu-btn { display:inline-flex; align-items:center; justify-content:center; background:var(--panel); border:1px solid var(--border); color:var(--text); width:36px; height:36px; border-radius:8px; }
+  .nav-links { display: none; }
+}
+
+/* Make mobile hamburger hover match the theme toggle */
+#mobile-menu-btn {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+#mobile-menu-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
 
 
 /* Mobile contact buttons: single column, full width */
@@ -601,12 +700,13 @@ img.icon,
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: transform .15s ease;
+  box-shadow: var(--card-shadow);
+  transition: transform .15s ease, box-shadow .15s ease;
 }
 
 .tech-item:hover {
   transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .tech-item img {
@@ -657,9 +757,56 @@ img.icon,
   }
 }
 
-/* ===========================
-   Project Dropdown Styles
-   =========================== */
+#experience {
+}
+
+#experience h2 {
+  margin-bottom: 18px;
+  color: var(--text);
+}
+.experience-item {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: var(--card-shadow);
+  display: block;
+  position: relative;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.experience-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+.experience-item h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  color: var(--text);
+}
+.experience-item h3 {
+  margin: 0 0 3px 0;
+  font-size: 18px;
+  color: var(--muted);
+}
+.experience-item > p {
+  margin: 0 0 8px 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+.experience-item ul {
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+.experience-item li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 640px) {
+  .experience-item { padding: 14px 14px; border-radius: 10px; }
+  .experience-item h3 { font-size: 15px; }
+}
+
 .project-header {
   display: flex;
   justify-content: space-between;

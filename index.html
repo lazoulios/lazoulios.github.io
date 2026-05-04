@@ -27,6 +27,7 @@
       <div class="brand">Georgios Lazaridis</div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -54,6 +55,12 @@
              7 7 0 0 0 21 12.79z" fill="currentColor"></path>
   </svg>
 </button>
+      <!-- Mobile menu button (visible on small screens) -->
+      <button id="mobile-menu-btn" aria-label="Open menu" title="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
 </div>
   </header>
 
@@ -65,7 +72,6 @@
         <p>
           4th Year Student in Computer Science at Aristotle University of Thessaloniki. Interested in new working opportunities.
           Focusing on software development and machine learning.
-          I am a dedicated and enthusiastic student with a passion for technology, problem-solving, and software development.
           I like to spend my free time making games on Godot or Unity!
         </p>
         <img src="fire.gif" alt="Fire animation" class="about-gif about-gif--desktop" />
@@ -143,6 +149,22 @@
         <div class="tech-item">
           <img src="https://skillicons.dev/icons?i=github" alt="GitHub" width="40" height="40">
           <span>GitHub</span>
+      </div>
+    </section>
+
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="experience-item">
+        <h2>AI Engineer @ mSensis</h2>
+        <p>Internship | March 2025 - May 2025</p>
+        <ul>
+          <li>Executed comprehensive Exploratory Data Analysis (EDA), validating internal datasets against peer-reviewed studies to ensure on the validity of the modeling.</li>
+          <li>Engineered preprocessing scripts to handle missing values, duplicates, and interpolation, significantly improving data quality and model reliability.</li>
+          <li>Architected a time-series framework, optimizing data granularity and volume requirements while selecting high-performance models to forecast future trends.</li>
+          <li>Successfully containerized data processing pipelines and machine learning models using Docker and deployed them into a production-grade API. Managed version control via GitLab. </li>
+        </ul>
       </div>
     </section>
 
@@ -294,12 +316,29 @@
 
     <footer>
   <div class="footer-inner">
-    <p>© 2025 Georgios Lazaridis</p>
+    <p>© 2026 Georgios Lazaridis</p>
     <img src="gif.gif" alt="hi :p" class="footer-gif">
   </div>
 </footer>
 
     
+    <!-- Mobile nav markup -->
+    <div id="mobile-backdrop" class="mobile-backdrop" hidden></div>
+    <nav id="mobile-nav" class="mobile-nav" aria-hidden="true">
+      <div class="mobile-nav-inner">
+        <button id="mobile-nav-close" class="mobile-nav-close" aria-label="Close menu">✕</button>
+        <ul class="mobile-nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+          <div class="mobile-nav-gif">
+            <img src="menu.gif" alt="menu animation" />
+          </div>
+      </div>
+    </nav>
+
     <!-- Script -->
     <script src="script.js"></script>
 
