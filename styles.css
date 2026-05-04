@@ -249,7 +249,7 @@ header .brand {
     display: block;
     width: 60px;
     height: auto;
-    transform: scaleX(-1);
+    transform: scaleX(-1) translateX(-10px);
     margin-top: 5px;
   }
 }
@@ -619,7 +619,6 @@ img.icon,
   top: 12px;
   right: 20px;
   transition: background .18s ease, color .12s ease, transform .12s ease, box-shadow .12s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .mobile-nav-links {
@@ -690,7 +689,6 @@ img.icon,
 
 /* Make mobile hamburger hover match the theme toggle */
 #mobile-menu-btn {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
