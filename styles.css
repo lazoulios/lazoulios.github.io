@@ -263,7 +263,7 @@ header .brand {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 8px;
+  padding: 12px;
   box-shadow: var(--card-shadow);
   transition: transform .15s ease;
 }
@@ -970,13 +970,36 @@ svg {
   -webkit-touch-callout: none;
 }
 
+/* Remove mobile tap highlight and touch callout when tapping project cards */
+.project,
+.project-header {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+
 .project-header:hover {
   color: var(--accent);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
 }
 
 .project-header h3 {
   margin: 0;
   flex: 1;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
 }
 
 .dropdown-arrow {
