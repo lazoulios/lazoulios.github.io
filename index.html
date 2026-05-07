@@ -17,6 +17,11 @@
 
   <link rel="stylesheet" href="styles.css?v=5">
 
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
   <style>
     .footer-gif {
       height: 100px;
@@ -77,12 +82,22 @@
     <section id="about">
       <h2>About Me</h2>
       <div class="about-row">
-        <p>
-          4th Year Student in Computer Science at Aristotle University of Thessaloniki. Interested in new working
-          opportunities.
-          Focusing on software development and machine learning.
-          I like to spend my free time making games on Godot or Unity!
-        </p>
+        <div class="about-content">
+          <p>
+            4th Year Student in Computer Science at Aristotle University of Thessaloniki. Interested in new working
+            opportunities.
+            Focusing on software development and machine learning.
+            I like to spend my free time making games on Godot or Unity!
+          </p>
+          <div id="github-activity" class="github-activity">
+            <div class="activity-row">
+              <div id="activity-indicator" class="activity-indicator idle" aria-hidden="true"></div>
+              <div id="activity-text" class="activity-text" aria-live="polite">Loading latest public activity...</div>
+            </div>
+          </div>
+          <span class="commit-chart-label">GitHub Commit Chart:</span>
+          <img src="https://ghchart.rshah.org/lazoulios" alt="GitHub Commit Chart" class="commit-chart" />
+        </div>
         <img src="fire.gif" alt="Fire animation" class="about-gif about-gif--desktop" />
       </div>
       <div class="about-btn-row">
@@ -92,7 +107,6 @@
         <img src="fire.gif" alt="Fire animation" class="about-gif about-gif--mobile" />
       </div>
     </section>
-
 
     <!-- Experience Section -->
     <section id="experience">
@@ -182,8 +196,10 @@
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"
             width="40" height="40">
           <span>Docker</span>
-        </div><div class="tech-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" width="40" height="40">
+        </div>
+        <div class="tech-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI"
+            width="40" height="40">
           <span>FastAPI</span>
         </div>
         <div class="tech-item">
@@ -249,8 +265,33 @@
           </div>
         </article>
 
-        <!-- Regularized Neural Network -->
+        <!-- Robust Iterative K-Means Clustering & Anomaly Detection Pipeline -->
         <article class="project project-visible">
+          <div class="project-header" onclick="toggleProject(this)">
+            <h3>Robust Iterative K-Means Clustering & Anomaly Detection Pipeline</h3>
+            <span class="dropdown-arrow">▼</span>
+          </div>
+          <div class="project-content">
+            <p>
+              This project involved the design and implementation of a custom unsupervised learning pipeline to address
+              clustering and outlier detection challenges in corrupted datasets. The architecture combined defensive
+              data pre-processing with a novel Iterative K-Means algorithm. This approach leveraged a core-filtering
+              technique—training exclusively on the closest 30% of points to the initial centers—to refine centroid
+              detection and ensure they were not shifted by noise. Developed using Python, Pandas, and Scikit-Learn ,
+              the implementation highlighted the effectiveness of isolating noise prior to final classification. Project
+              was developed by team of three.
+            </p>
+            <a href="https://github.com/lazoulios/data-mining-and-clustering" target="_blank" rel="noopener noreferrer"
+              class="github-btn">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt=""
+                class="icon" width="18" height="18" />
+              View on GitHub
+            </a>
+          </div>
+        </article>
+
+        <!-- Regularized Neural Network -->
+        <article class="project project-hidden">
           <div class="project-header" onclick="toggleProject(this)">
             <h3>Regularized Neural Network for Regional Air-Quality Forecasting</h3>
             <span class="dropdown-arrow">▼</span>
@@ -323,31 +364,6 @@
           </div>
         </article>
 
-        <!-- Endless Runner Game -->
-        <article class="project project-hidden">
-          <div class="project-header" onclick="toggleProject(this)">
-            <h3>Endless Runner Game</h3>
-            <span class="dropdown-arrow">▼</span>
-          </div>
-          <div class="project-content">
-            <p>
-              Developed an endless runner game in Unity inspired by titles like Subway Surfers, where the player
-              continuously navigates obstacles while collecting coins. While the character and obstacle models were
-              provided, I implemented all the game logic and mechanics in the engine, handling player movement, obstacle
-              spawning, scoring, and progression. Beyond coding, I also worked on the presentation of the game by
-              putting together a simple soundtrack in Audacity, designing a logo in Photoshop, and creating a coin asset
-              in Blender. This project gave me hands-on experience with Unity's workflow, scripting, and integrating
-              different types of media into a functional game. This project was developed as part of a university
-              project.
-            </p>
-            <a href="https://github.com/lazoulios/unity-endless-runner" target="_blank" rel="noopener noreferrer"
-              class="github-btn">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt=""
-                class="icon" width="18" height="18" />
-              View on GitHub
-            </a>
-          </div>
-        </article>
       </div>
       <div id="toggle-projects" class="toggle-line">Show More</div>
     </section>
