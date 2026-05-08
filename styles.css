@@ -219,10 +219,12 @@ header .brand {
   height: 7px;
   border-radius: 50%;
   background-color: currentColor;
-  color: #94a3b8; /* default muted color (idle) */
+  color: #94a3b8;
+  /* default muted color (idle) */
   flex: 0 0 auto;
-  box-shadow: 0 0 6px rgba(0,0,0,0.08);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
 }
+
 .activity-indicator::after {
   content: "";
   position: absolute;
@@ -236,21 +238,38 @@ header .brand {
   opacity: 0;
   pointer-events: none;
 }
+
 @keyframes ripple {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
-  70% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
-  100% { opacity: 0; }
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.9;
+  }
+
+  70% {
+    transform: translate(-50%, -50%) scale(2.4);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
+
 .activity-indicator.live {
-  color: #16a34a; /* green */
+  color: #16a34a;
+  /* green */
 }
+
 .activity-indicator.live::after {
   animation: ripple 1.6s infinite;
 }
+
 .activity-indicator.error {
-  color: #ef4444; /* red */
-  box-shadow: 0 0 8px rgba(239,68,68,0.28);
+  color: #ef4444;
+  /* red */
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.28);
 }
+
 .activity-text {
   color: var(--muted);
   font-size: 0.95em;
@@ -273,6 +292,13 @@ header .brand {
   background: var(--panel);
   padding: 6px 8px;
   align-self: flex-start;
+}
+
+html[data-theme="dark"] .commit-chart {
+  filter: brightness(0.7);
+  background: #1A1D24;
+  border: 1px solid #272B35;
+  box-shadow: 0 8px 28px rgba(3, 9, 33, 0.12);
 }
 
 .resume-btn {
@@ -439,13 +465,11 @@ header .brand {
   text-decoration: none;
   justify-content: center;
   box-shadow: var(--shadow);
-  transition: background 0.2s ease, transform 0.2s ease;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-drag: none;
-  user-drag: none;
   -webkit-touch-callout: none;
 }
 
@@ -485,21 +509,17 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  /* anchor items to the bottom of the footer */
   gap: 12px;
 }
 
 .footer-gif {
   height: 100px;
-  /* tweak size */
   width: auto;
   object-fit: contain;
   display: block;
   align-self: flex-end;
-  /* ensure it hugs the footer bottom */
 }
 
-/* Make sure the footer sits at the bottom of the page */
 html,
 body {
   height: 100%;
